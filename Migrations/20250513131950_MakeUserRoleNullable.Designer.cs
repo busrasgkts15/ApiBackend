@@ -3,6 +3,7 @@ using System;
 using ApiBackend.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ApiBackend.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250513131950_MakeUserRoleNullable")]
+    partial class MakeUserRoleNullable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -187,6 +190,7 @@ namespace ApiBackend.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<string>("name")
+                        .IsRequired()
                         .HasMaxLength(30)
                         .HasColumnType("varchar(30)");
 
@@ -196,6 +200,7 @@ namespace ApiBackend.Migrations
                         .HasColumnType("varchar(30)");
 
                     b.Property<string>("phone")
+                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("surname")

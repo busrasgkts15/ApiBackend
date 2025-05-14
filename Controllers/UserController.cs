@@ -1,5 +1,7 @@
 using ApiBackend.Context;
+using ApiBackend.Dto.UserDto;
 using Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -7,6 +9,7 @@ namespace ApiBackend.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
+[Authorize]
 public class UserController : ControllerBase
 {
     private readonly AppDbContext _context;
@@ -35,11 +38,32 @@ public class UserController : ControllerBase
     }
 
     [HttpPost("AddUser")]
-    public async Task<IActionResult> AddUser([FromBody] User user)
+    public async Task<IActionResult> AddUser([FromBody] AddUserDto addUserDto)
     {
-        await _context.users.AddAsync(user);
-        _context.SaveChanges();
-        return NoContent();
+        var newUser = new User
+        {
+            name = addUserDto.name,
+            surname = addUserDto.surname,
+            e_mail = addUserDto.e_mail,
+            passwordHash = addUserDto.passwordHash,
+            phone = addUserDto.phone,
+            CDate = new DateTime(),
+        };
+        _context.users.Add(newUser);
+        await _context.SaveChangesAsync();
+
+
+        var newUserRole = new UserRole
+        {
+            userId = newUser.userId,
+            roleId = addUserDto.role,
+
+        };
+
+        _context.userRoles.Add(newUserRole);
+        await _context.SaveChangesAsync();
+        return Ok();
+
     }
 
     [HttpDelete("DeleteUser/{id}")]
@@ -55,19 +79,21 @@ public class UserController : ControllerBase
         return Ok();
     }
 
-    [HttpPut("ChangeUser/{id}")]
-    public async Task<IActionResult> ChangeUser(int id, User user)
+    [HttpPut("ChangeUser/{userId}")]
+    public async Task<IActionResult> ChangeUser(int userId, UpsertUserDto upsertUserDto)
     {
-        var changeUser = await _context.users.FindAsync(id);
+        var changeUser = await _context.users.Where(p => p.userId == userId).FirstOrDefaultAsync();
         if (changeUser == null)
         {
             return NotFound();
         }
 
-        changeUser.name = user.name;
-        changeUser.surname = user.surname;
-        changeUser.phone = user.phone;
-        changeUser.e_mail = user.e_mail;
+        changeUser.name = upsertUserDto.name;
+        changeUser.surname = upsertUserDto.surname;
+        changeUser.phone = upsertUserDto.phone;
+        changeUser.e_mail = upsertUserDto.e_mail;
+        changeUser.passwordHash = upsertUserDto.passwordHash;
+
         await _context.SaveChangesAsync();
         return Ok(changeUser);
     }

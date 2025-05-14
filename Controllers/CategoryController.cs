@@ -1,4 +1,5 @@
 using ApiBackend.Context;
+using ApiBackend.Dto.CategoryDto;
 using Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -9,6 +10,7 @@ namespace ApiBackend.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
+[Authorize]
 // url adresi tanımlar, [controller], sınıf adının sonundaki controller ekinin kaldırılmış hali ile kullanılır.
 public class CategoryController : ControllerBase
 {
@@ -39,11 +41,17 @@ public class CategoryController : ControllerBase
     }
 
     [HttpPost("AddCategory")]
-    public async Task<IActionResult> AddCategory([FromBody] Category category)
+    public async Task<IActionResult> AddCategory([FromBody] CategoryDto categoryDto)
     {
-        _context.categories.Add(category);
+        var newCategory = new Category
+        {
+            categoryId = categoryDto.categoryId,
+            categoryName = categoryDto.categoryName,
+            totalProduct = categoryDto.totalProduct
+        };
+        _context.categories.Add(newCategory);
         await _context.SaveChangesAsync();
-        return Created();
+        return Ok(newCategory);
 
     }
 
@@ -62,17 +70,18 @@ public class CategoryController : ControllerBase
     }
 
     [HttpPut("ChangeCategory/{id}")]
-    public async Task<IActionResult> ChangeCategory(int id, Category category)
+    public async Task<IActionResult> ChangeCategory(int id, CategoryDto categoryDto)
     {
-        var changeCategory = await _context.categories.FindAsync(id);
+        var changeCategory = await _context.categories.Where(p => p.categoryId == id).FirstOrDefaultAsync();
         if (changeCategory == null)
         {
             return NotFound();
         }
 
-        changeCategory.categoryId = category.categoryId;
-        changeCategory.categoryName = category.categoryName;
-        changeCategory.totalProduct = category.totalProduct;
+        //changeCategory.categoryId = categoryDto.categoryId;
+        changeCategory.categoryName = categoryDto.categoryName;
+        changeCategory.totalProduct = categoryDto.totalProduct;
+
         await _context.SaveChangesAsync();
         return Ok(changeCategory);
     }

@@ -1,5 +1,7 @@
 using ApiBackend.Context;
+using ApiBackend.Dto.SupportDto;
 using Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -7,6 +9,7 @@ namespace ApiBackend.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
+[Authorize]
 public class SupportController : ControllerBase
 {
 
@@ -38,17 +41,28 @@ public class SupportController : ControllerBase
     }
 
     [HttpPost("AddSupport")]
-    public async Task<IActionResult> AddSupport([FromBody] Support support)
+    public async Task<IActionResult> AddSupport([FromBody] AddSupportDto addSupportDto)
     {
-        await _context.supports.AddAsync(support);
-        _context.SaveChanges();
-        return NoContent();
+        var newSupport = new Support
+        {
+            messageId = addSupportDto.messageId,
+            userId = addSupportDto.userId,
+            message = addSupportDto.message,
+            messageDate = new DateTime(),
+            CDate = new DateTime()
+        };
+        _context.supports.Add(newSupport);
+        await _context.SaveChangesAsync();
+        return Ok(newSupport);
+
     }
 
     [HttpDelete("DeleteSupport/{id}")]
-    public async Task<IActionResult> DeleteSupport(int id){
+    public async Task<IActionResult> DeleteSupport(int id)
+    {
         var deleteSupport = await _context.supports.FindAsync(id);
-        if(deleteSupport == null) {
+        if (deleteSupport == null)
+        {
             return NotFound();
         }
         _context.supports.Remove(deleteSupport);

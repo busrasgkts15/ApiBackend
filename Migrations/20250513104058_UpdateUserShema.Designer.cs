@@ -3,6 +3,7 @@ using System;
 using ApiBackend.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ApiBackend.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250513104058_UpdateUserShema")]
+    partial class UpdateUserShema
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -25,16 +28,16 @@ namespace ApiBackend.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<DateTime?>("CDate")
+                    b.Property<DateTime>("CDate")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<int?>("CUser_id")
+                    b.Property<int>("CUser_id")
                         .HasColumnType("int");
 
-                    b.Property<DateTime?>("MDate")
+                    b.Property<DateTime>("MDate")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<int?>("MUser_id")
+                    b.Property<int>("MUser_id")
                         .HasColumnType("int");
 
                     b.Property<string>("categoryName")
@@ -56,16 +59,16 @@ namespace ApiBackend.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<DateTime?>("CDate")
+                    b.Property<DateTime>("CDate")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<int?>("CUser_id")
+                    b.Property<int>("CUser_id")
                         .HasColumnType("int");
 
-                    b.Property<DateTime?>("MDate")
+                    b.Property<DateTime>("MDate")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<int?>("MUser_id")
+                    b.Property<int>("MUser_id")
                         .HasColumnType("int");
 
                     b.Property<int>("categoryId")
@@ -100,16 +103,16 @@ namespace ApiBackend.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<DateTime?>("CDate")
+                    b.Property<DateTime>("CDate")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<int?>("CUser_id")
+                    b.Property<int>("CUser_id")
                         .HasColumnType("int");
 
-                    b.Property<DateTime?>("MDate")
+                    b.Property<DateTime>("MDate")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<int?>("MUser_id")
+                    b.Property<int>("MUser_id")
                         .HasColumnType("int");
 
                     b.Property<string>("roleName")
@@ -127,19 +130,19 @@ namespace ApiBackend.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<DateTime?>("CDate")
+                    b.Property<DateTime>("CDate")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<int?>("CUser_id")
+                    b.Property<int>("CUser_id")
                         .HasColumnType("int");
 
                     b.Property<bool>("IsOpen")
                         .HasColumnType("tinyint(1)");
 
-                    b.Property<DateTime?>("MDate")
+                    b.Property<DateTime>("MDate")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<int?>("MUser_id")
+                    b.Property<int>("MUser_id")
                         .HasColumnType("int");
 
                     b.Property<string>("message")
@@ -147,14 +150,14 @@ namespace ApiBackend.Migrations
                         .HasMaxLength(500)
                         .HasColumnType("varchar(500)");
 
-                    b.Property<DateTime?>("messageDate")
+                    b.Property<DateTime>("messageDate")
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("replyMessage")
                         .HasMaxLength(1000)
                         .HasColumnType("varchar(1000)");
 
-                    b.Property<int?>("userId")
+                    b.Property<int>("userId")
                         .HasColumnType("int");
 
                     b.HasKey("messageId");
@@ -170,16 +173,16 @@ namespace ApiBackend.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<DateTime?>("CDate")
+                    b.Property<DateTime>("CDate")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<int?>("CUser_id")
+                    b.Property<int>("CUser_id")
                         .HasColumnType("int");
 
-                    b.Property<DateTime?>("MDate")
+                    b.Property<DateTime>("MDate")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<int?>("MUser_id")
+                    b.Property<int>("MUser_id")
                         .HasColumnType("int");
 
                     b.Property<string>("e_mail")
@@ -187,6 +190,7 @@ namespace ApiBackend.Migrations
                         .HasColumnType("longtext");
 
                     b.Property<string>("name")
+                        .IsRequired()
                         .HasMaxLength(30)
                         .HasColumnType("varchar(30)");
 
@@ -196,6 +200,7 @@ namespace ApiBackend.Migrations
                         .HasColumnType("varchar(30)");
 
                     b.Property<string>("phone")
+                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("surname")
@@ -214,19 +219,19 @@ namespace ApiBackend.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<DateTime?>("CDate")
+                    b.Property<DateTime>("CDate")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<int?>("CUser_id")
+                    b.Property<int>("CUser_id")
                         .HasColumnType("int");
 
-                    b.Property<DateTime?>("MDate")
+                    b.Property<DateTime>("MDate")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<int?>("MUser_id")
+                    b.Property<int>("MUser_id")
                         .HasColumnType("int");
 
-                    b.Property<DateTime?>("registrationDate")
+                    b.Property<DateTime>("registrationDate")
                         .HasColumnType("datetime(6)");
 
                     b.Property<int>("roleId")
@@ -259,7 +264,9 @@ namespace ApiBackend.Migrations
                 {
                     b.HasOne("Entities.User", "user")
                         .WithMany()
-                        .HasForeignKey("userId");
+                        .HasForeignKey("userId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("user");
                 });
