@@ -29,6 +29,14 @@ Nuget Packages:
 - `usurname : efe`
 - `password : efe123`
 
+## Proje Yapısı
+
+- `Controllers/` — API uç noktalarını yöneten denetleyiciler
+- `Dto/` — Veri transfer nesneleri
+- `Entities/` — Veritabanı tablolarını temsil eden modeller
+- `Context/` — Entity Framework DB context
+- `Authentication/` — JWT işlemleri
+
 ## Apı Dokümantasyonu
 
 - `POST : "/api/Auth/Login" Giriş yapan kullanıcıya token döner`
