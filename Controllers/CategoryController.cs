@@ -10,7 +10,6 @@ namespace ApiBackend.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-[Authorize]
 // url adresi tanımlar, [controller], sınıf adının sonundaki controller ekinin kaldırılmış hali ile kullanılır.
 public class CategoryController : ControllerBase
 {
@@ -40,6 +39,7 @@ public class CategoryController : ControllerBase
         return Ok(getCategory);
     }
 
+    [Authorize]
     [HttpPost("AddCategory")]
     public async Task<IActionResult> AddCategory([FromBody] CategoryDto categoryDto)
     {
@@ -55,6 +55,7 @@ public class CategoryController : ControllerBase
 
     }
 
+    [Authorize]
     [HttpDelete("DeleteCategory/{id}")]
     public async Task<IActionResult> DeleteCategory(int id)
     {
@@ -69,6 +70,7 @@ public class CategoryController : ControllerBase
         return NoContent();
     }
 
+    [Authorize]
     [HttpPut("ChangeCategory/{id}")]
     public async Task<IActionResult> ChangeCategory(int id, CategoryDto categoryDto)
     {
@@ -85,6 +87,5 @@ public class CategoryController : ControllerBase
         await _context.SaveChangesAsync();
         return Ok(changeCategory);
     }
-
 
 }

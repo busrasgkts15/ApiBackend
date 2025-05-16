@@ -9,7 +9,6 @@ namespace ApiBackend.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-[Authorize]
 public class ProductController : ControllerBase
 {
     private readonly AppDbContext _context;
@@ -36,6 +35,7 @@ public class ProductController : ControllerBase
         return Ok(getProduct);
     }
 
+    [Authorize]
     [HttpPost("AddProduct")]
     public async Task<IActionResult> AddProduct([FromBody] AddProductDto addProductDto)
     {
@@ -53,6 +53,7 @@ public class ProductController : ControllerBase
         return NoContent();
     }
 
+    [Authorize]
     [HttpDelete("DeleteProduct/{id}")]
     public async Task<IActionResult> DeleteProduct(int id)
     {
@@ -68,7 +69,7 @@ public class ProductController : ControllerBase
     }
 
 
-
+    [Authorize]
     [HttpPut("UpdateProduct/{id}")]
     public async Task<IActionResult> UpdateProduct(int id, UpsertProductDto upsertProductDto)
     {
