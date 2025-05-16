@@ -38,6 +38,6 @@ Nuget Packages:
 - `PUT  : "/api/Product/UpdateProduct/{id}" Id değerine göre ürün günceller`
 - `DELETE : "/api/Product/DeleteProduct/{id} Id değerine ait ürünü siler`
 
-  ![Dosya Yapısı](./assest/Backend.png)
+  
   ![Swagger Arayüzü](./assest/swagger.png)
   
