@@ -26,6 +26,7 @@ Nuget Packages:
 
 ## Kullanıcı giriş bilgileri 
 
+- `Yetki gereken uç noktalara erişmek için öncelikle `/api/Auth/Login` ile token alınmalı ve isteklerde `Authorization: Bearer <token>` başlığı kullanılmalıdır.`
 - `usurname : efe`
 - `password : efe123`
 
