@@ -41,7 +41,6 @@ public class ProductController : ControllerBase
     {
         var newProduct = new Product
         {
-            prodId = addProductDto.prodId,
             categoryId = addProductDto.categoryId,
             prodName = addProductDto.prodName,
             prodDescription = addProductDto.prodDescription,

@@ -66,8 +66,16 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 builder.Services.AddDbContext<AppDbContext>();
 builder.Services.AddScoped<AuthServices>();
 
+builder.Services.AddCors(p => p.AddPolicy("corsapp", builder =>
+    {
+        builder.WithOrigins("*").AllowAnyMethod().AllowAnyHeader();
+    }
+    ));
+
+
 
 var app = builder.Build();
+app.UseCors("corsapp");
 
 if (app.Environment.IsDevelopment())
 {
