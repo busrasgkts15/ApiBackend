@@ -24,6 +24,6 @@ Nuget Packages:
 - `JWT tabanlı kimlik doğrulama`
 - `Katmanlı mimari: Controllers, DTOs, Context, Authentication, vs.`
 
-  ![Dosya Yapısı](./assets/Backend.png)
+  ![Dosya Yapısı](./assest/Backend.png)
   ![Swagger Arayüzü](./assets/swagger.png)
   
