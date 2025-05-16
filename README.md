@@ -24,4 +24,4 @@ Nuget Packages:
 - `JWT tabanlı kimlik doğrulama`
 - `Katmanlı mimari: Controllers, DTOs, Context, Authentication, vs.`
 
-  ![Dosya Yapısı][<img width="223" alt="Backend" src="https://github.com/user-attachments/assets/f0bd4b54-1f6b-4e00-94ce-37f649baeea9" />]
+  ![Dosya Yapısı](<img width="223" alt="Backend" src="https://github.com/user-attachments/assets/f0bd4b54-1f6b-4e00-94ce-37f649baeea9" />)
