@@ -25,5 +25,5 @@ Nuget Packages:
 - `Katmanlı mimari: Controllers, DTOs, Context, Authentication, vs.`
 
   ![Dosya Yapısı](./assest/Backend.png)
-  ![Swagger Arayüzü](./assets/swagger.png)
+  ![Swagger Arayüzü](./assest/swagger.png)
   
