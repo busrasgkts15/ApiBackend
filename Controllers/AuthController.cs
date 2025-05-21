@@ -10,7 +10,6 @@ namespace ApiBackend.Controllers;
 public class AuthController : ControllerBase
 {
 
-    // bu kısma hangi soyutlama gelecek
     private readonly AuthServices _authServices;
 
     public AuthController(AuthServices authServices)

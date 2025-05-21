@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "94sy1tfbgjU=",
+  "dgSpecHash": "JtGT07a3cD0=",
   "success": true,
-  "projectFilePath": "/Users/busragoktas/Desktop/Staj_task/Proje/ApiBackend/ApiBackend.csproj",
+  "projectFilePath": "/Users/busragoktas/Desktop/ProjeTask/Backend/ApiBackend/ApiBackend.csproj",
   "expectedPackageFiles": [
     "/Users/busragoktas/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
     "/Users/busragoktas/.nuget/packages/microsoft.aspnetcore.authentication.jwtbearer/8.0.0/microsoft.aspnetcore.authentication.jwtbearer.8.0.0.nupkg.sha512",

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/busragoktas/Desktop/Staj_task/Proje/ApiBackend/ApiBackend.csproj": {}
+    "/Users/busragoktas/Desktop/ProjeTask/Backend/ApiBackend/ApiBackend.csproj": {}
   },
   "projects": {
-    "/Users/busragoktas/Desktop/Staj_task/Proje/ApiBackend/ApiBackend.csproj": {
+    "/Users/busragoktas/Desktop/ProjeTask/Backend/ApiBackend/ApiBackend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/busragoktas/Desktop/Staj_task/Proje/ApiBackend/ApiBackend.csproj",
+        "projectUniqueName": "/Users/busragoktas/Desktop/ProjeTask/Backend/ApiBackend/ApiBackend.csproj",
         "projectName": "ApiBackend",
-        "projectPath": "/Users/busragoktas/Desktop/Staj_task/Proje/ApiBackend/ApiBackend.csproj",
+        "projectPath": "/Users/busragoktas/Desktop/ProjeTask/Backend/ApiBackend/ApiBackend.csproj",
         "packagesPath": "/Users/busragoktas/.nuget/packages/",
-        "outputPath": "/Users/busragoktas/Desktop/Staj_task/Proje/ApiBackend/obj/",
+        "outputPath": "/Users/busragoktas/Desktop/ProjeTask/Backend/ApiBackend/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/busragoktas/.nuget/NuGet/NuGet.Config"
